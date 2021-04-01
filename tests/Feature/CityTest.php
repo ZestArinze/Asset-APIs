@@ -27,7 +27,7 @@ class CityTest extends TestCase
             'state_id' => $state->id
         ]);
 
-        $response = $this->get('/api/cities/' . $state->id, [
+        $response = $this->get('/api/states/' . $state->id . '/cities', [
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
         ]);

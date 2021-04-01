@@ -24,7 +24,7 @@ class StateTest extends TestCase
             'country_id' => $country->id
         ]);
 
-        $response = $this->get('/api/states/' . $country->id, [
+        $response = $this->get('/api/countries/' . $country->id . '/states', [
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
         ]);

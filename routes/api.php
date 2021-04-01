@@ -18,5 +18,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/countries', [CountryController::class, 'index']);
-Route::get('/states/{countryeId}', [StateController::class, 'index']);
-Route::get('/cities/{stateId}', [CityController::class, 'index']);
+Route::get('/countries/{id}', [CountryController::class, 'show']);
+Route::get('/countries/{id}/states', [CountryController::class, 'states']);
+
+Route::get('/states/{id}', [StateController::class, 'show']);
+Route::get('/states/{id}/cities', [StateController::class, 'cities']);
+
+Route::get('/cities/{id}', [CityController::class, 'show']);

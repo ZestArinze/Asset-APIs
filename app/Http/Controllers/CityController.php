@@ -2,30 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\State;
+use App\Models\City;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
+    
     /**
-     * get cities belonging to a state
+     * get a city by id
      */
-    public function index(Request $request, $id) {
+    public function show(Request $request, $id) {
 
-        $state = State::find($id);
-        
-        if(!$state) {
+        $city = City::find($id);
+
+        if(!$city) {
             return response()->json([
                 'status' => false,
-                'message' => 'No such state',
+                'message' => 'No such city',
                 'data' => null,
             ], 404);
         }
 
         return response()->json([
             'status' => true,
-            'message' => 'Cities retrieved',
-            'data' => $state->cities,
+            'message' => 'City retrieved',
+            'data' => $city,
         ]);
     }
 }
