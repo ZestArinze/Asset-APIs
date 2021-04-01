@@ -17,7 +17,7 @@ class StateTest extends TestCase
      *
      * @return void
      */
-    public function test_getStates_success_StatesRetrived()
+    public function test_getStates_success_statesRetrived()
     {
         $country = Country::factory()->create();
         $state = State::factory()->create([
@@ -42,6 +42,29 @@ class StateTest extends TestCase
         ]);
 
         $response->assertStatus(200);
+    }
+
+    /**
+     * a test to get states in a country
+     *
+     * @return void
+     */
+    public function test_getStates_failure_countryNotExist()
+    {
+        $state = State::factory()->create();
+
+        $response = $this->get('/api/countries/' . 999999 . '/states', [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+        ]);
+
+        $response->assertJson([
+            'status' => false,
+            'message' => 'No such country',
+            'data' => null,
+        ]);
+
+        $response->assertStatus(404);
     }
 
     // limiting test cases due to time
