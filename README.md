@@ -11,4 +11,5 @@
 
 ## Testing
 
-php arisan test
+- php arisan:test
+- or user phpunit in vendor
